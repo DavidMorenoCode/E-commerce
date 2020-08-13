@@ -1,0 +1,9 @@
+.contenedorProductos{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.item{
+    width: 50px;
+}
