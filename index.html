@@ -4,44 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     
 </head>
 <body>
-    <h1>Seleccione su producto:</h1>
-    <div class="contenedorProductos" id="contenedorProductos">
-    </div>
-    <h1>Carrito:</h1>
-    <div class="contenedorCarrito" id="contenedorCarrito">
-    </div>
+    <div class="container">
+        <h1>Seleccione su producto:</h1>
+        <div class="contenedorProductos" id="contenedorProductos">
+        </div>
+        <h1>Carrito:</h1>
+        <div class="contenedorCarrito" id="contenedorCarrito">
+        </div>
 
-    <button onclick="solicitarDatos();">Finalizar compra</button>
-    <button onclick="limpiarCarrito();">Limpiar Carrito</button>
-
-    <div class="contenedorFormulario">
-        <form class="formulario">
-            <label>
-                Nombre:
-                <input type="text" placeholder="Ingrese su nombre">
-            </label>
-            <label>
-                Apellido:
-                <input type="text" placeholder="Ingrese su apellido">
-            </label>
-            <div class="contenedorTiponvio">
-                Tipo de envio:
-            <label>
-                Retirar el producto
-                <input type="radio" name="inputEnvio" id="">
-            </label>
-            <label>
-                Enviamelo a mi dirección
-                <input type="radio" name="inputEnvio" id="">
-            </label>
-            </div>
-        </form>
+        <div class="contenedorFormulario">
+            <h1>Información de envio:</h1>
+            <form class="formulario">
+                <label>
+                    Nombre:
+                    <input type="text" placeholder="Ingrese su nombre">
+                </label>
+                <label>
+                    Apellido:
+                    <input type="text" placeholder="Ingrese su apellido">
+                </label>
+                <div class="contenedorTiponvio">
+                    Tipo de envio:
+                <label>
+                    Retirar el producto
+                    <input type="radio" name="inputEnvio" id="">
+                </label>
+                <label>
+                    Enviamelo a mi dirección
+                    <input type="radio" name="inputEnvio" id="">
+                    <input type="text" id="direccion">
+                </label>                
+                </div>
+            </form>
+            <h1>Medios de pago:</h1>
+            <form class="formulario">
+                <label>
+                    Tarjeta de credito
+                    <input type="radio" name="inputEnvio" id="">
+                </label>
+                <label>
+                    PSE
+                    <input type="radio" name="inputEnvio" id="">
+                </label>
+                <label>
+                    Consignación
+                    <input type="radio" name="inputEnvio" id="">
+                </label>
+                </div>
+            </form>
+        </div>
+        <button class="btn btn-success" onclick="solicitarDatos();">Finalizar compra</button>
+        <button class="btn btn-warning" onclick="limpiarCarrito();">Limpiar Carrito</button>
     </div>
-
     <script src="js/script.js"></script>
 </body>
 </html> 

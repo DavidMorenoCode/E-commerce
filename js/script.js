@@ -27,6 +27,8 @@ for (let index = 0; index < arrProductos.length; index++) {
 
     contenedorFruta.classList.add('item');
     btnAdd.textContent ='Añadir';
+    btnAdd.classList.add('btn');
+    btnAdd.classList.add('btn-info');
     btnAdd.addEventListener('click', ()=>{
         carrito.push(fruta);
         localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -55,7 +57,7 @@ function actualizarCarrito (){
         let paisOrigen = document.createElement('p');
         let precio = document.createElement('p');
         
-        
+        contenedorFruta.classList.add('itemCarrito');
         nombreFruta.textContent = frutaCarrito.nombre;
         paisOrigen.textContent = frutaCarrito.paisOrigen;
         precio.textContent = frutaCarrito.valor;
@@ -69,17 +71,7 @@ function actualizarCarrito (){
 }
 
 function solicitarDatos (){
-    let nombre = prompt('Ingrese su nombre:'); 
-    let validarEnvio = prompt('Te lo enviamos a tu hogar: (si/no)');
-    let direccion
     
-    if(validarEnvio === 'si'){
-        direccion = prompt('Ingrese su direccion:'); 
-    }
-    
-    console.log("Resultado: solicitarDatos -> nombre", nombre);
-    console.log("Resultado: solicitarDatos -> validarEnvio", validarEnvio);
-    console.log("Resultado: solicitarDatos -> direccion", direccion);
 }
 
 function limpiarCarrito(){
