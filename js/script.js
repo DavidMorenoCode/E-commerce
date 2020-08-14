@@ -87,9 +87,13 @@ function limpiarCarrito(){
     localStorage.removeItem('carrito');
 }
 
+function ordenar(funcionOrdenadora){
+    arrProductos.sort(funcionOrdenadora)
+    actualizarProductos();
+}
 
 function ordenarValor(){
-    arrProductos.sort(function (fruta1, fruta2) {
+    ordenar(function (fruta1, fruta2) {
         if (fruta1.valor > fruta2.valor) {
             return 1;
         }
@@ -97,11 +101,9 @@ function ordenarValor(){
             return -1;
         }
     });
-
-    actualizarProductos();
 }
 function ordenarNombre(){
-    arrProductos.sort(function (fruta1, fruta2) {
+    ordenar(function (fruta1, fruta2) {
         if (fruta1.nombre.toLocaleLowerCase() > fruta2.nombre.toLocaleLowerCase()) {
             return 1;
         }
@@ -109,7 +111,5 @@ function ordenarNombre(){
             return -1;
         }
     });
-
-    actualizarProductos();
 }
 
