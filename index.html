@@ -9,13 +9,38 @@
 </head>
 <body>
     <h1>Seleccione su producto:</h1>
-    <div class="contenedor" id="contenedorProductos">
+    <div class="contenedorProductos" id="contenedorProductos">
     </div>
     <h1>Carrito:</h1>
     <div class="contenedorCarrito" id="contenedorCarrito">
     </div>
 
     <button onclick="solicitarDatos();">Finalizar compra</button>
+    <button onclick="limpiarCarrito();">Limpiar Carrito</button>
+
+    <div class="contenedorFormulario">
+        <form class="formulario">
+            <label>
+                Nombre:
+                <input type="text" placeholder="Ingrese su nombre">
+            </label>
+            <label>
+                Apellido:
+                <input type="text" placeholder="Ingrese su apellido">
+            </label>
+            <div class="contenedorTiponvio">
+                Tipo de envio:
+            <label>
+                Retirar el producto
+                <input type="radio" name="inputEnvio" id="">
+            </label>
+            <label>
+                Enviamelo a mi dirección
+                <input type="radio" name="inputEnvio" id="">
+            </label>
+            </div>
+        </form>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

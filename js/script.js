@@ -82,3 +82,8 @@ function solicitarDatos (){
     console.log("Resultado: solicitarDatos -> direccion", direccion);
 }
 
+function limpiarCarrito(){
+    contenedorCarrito.innerHTML= null
+    localStorage.removeItem('carrito');
+}
+
