@@ -4,6 +4,8 @@ let arrProductos = [
     {nombre:'Limón', paisOrigen:'Argentina', valor:7},
     {nombre:'Aguacate', paisOrigen:'Colombia', valor:4},
 ]
+
+
 let carrito;
 let carritoLocalStorage;
 let contenedorP = document.querySelector('#contenedorProductos');
@@ -11,40 +13,46 @@ let contenedorCarrito = document.querySelector('#contenedorCarrito');
 
     if(localStorage.getItem('carrito')){
         carrito = JSON.parse(localStorage.getItem('carrito')); 
-        console.log("Resultado: carrito", carrito);
+        // console.log("Resultado: carrito", carrito);
         actualizarCarrito();
     }else{
         carrito = [];
     }
 
-for (let index = 0; index < arrProductos.length; index++) {
-    const fruta = arrProductos[index];
-    let contenedorFruta = document.createElement('div'); // CONTENEDOR DE TODA LA FRUTA
-    let nombreFruta = document.createElement('h1');
-    let paisOrigen = document.createElement('p');
-    let precio = document.createElement('p');
-    let btnAdd = document.createElement('button');
 
-    contenedorFruta.classList.add('item');
-    btnAdd.textContent ='Añadir';
-    btnAdd.classList.add('btn');
-    btnAdd.classList.add('btn-info');
-    btnAdd.addEventListener('click', ()=>{
-        carrito.push(fruta);
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        actualizarCarrito ();
-    });
+function actualizarProductos(){
+    contenedorP.innerHTML = null
+    for (let index = 0; index < arrProductos.length; index++) {
+        const fruta = arrProductos[index];
+        let contenedorFruta = document.createElement('div'); // CONTENEDOR DE TODA LA FRUTA
+        let nombreFruta = document.createElement('h1');
+        let paisOrigen = document.createElement('p');
+        let precio = document.createElement('p');
+        let btnAdd = document.createElement('button');
 
-    nombreFruta.textContent = fruta.nombre;
-    paisOrigen.textContent = fruta.paisOrigen;
-    precio.textContent = fruta.valor;
+        contenedorFruta.classList.add('item');
+        btnAdd.textContent ='Añadir';
+        btnAdd.classList.add('btn');
+        btnAdd.classList.add('btn-info');
+        btnAdd.addEventListener('click', ()=>{
+            carrito.push(fruta);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            actualizarCarrito ();
+        });
 
-    contenedorFruta.appendChild(nombreFruta);
-    contenedorFruta.appendChild(paisOrigen);
-    contenedorFruta.appendChild(precio);
-    contenedorFruta.appendChild(btnAdd);
-    contenedorP.appendChild(contenedorFruta);
+        nombreFruta.textContent = fruta.nombre;
+        paisOrigen.textContent = fruta.paisOrigen;
+        precio.textContent = fruta.valor;
+
+        contenedorFruta.appendChild(nombreFruta);
+        contenedorFruta.appendChild(paisOrigen);
+        contenedorFruta.appendChild(precio);
+        contenedorFruta.appendChild(btnAdd);
+        contenedorP.appendChild(contenedorFruta);
+    } 
 }
+
+actualizarProductos();
 
 
 function actualizarCarrito (){
@@ -77,5 +85,31 @@ function solicitarDatos (){
 function limpiarCarrito(){
     contenedorCarrito.innerHTML= null
     localStorage.removeItem('carrito');
+}
+
+function ordenar(funcionOrdenadora){
+    arrProductos.sort(funcionOrdenadora)
+    actualizarProductos();
+}
+
+function ordenarValor(){
+    ordenar(function (fruta1, fruta2) {
+        if (fruta1.valor > fruta2.valor) {
+            return 1;
+        }
+        if (fruta1.valor < fruta2.valor) {
+            return -1;
+        }
+    });
+}
+function ordenarNombre(){
+    ordenar(function (fruta1, fruta2) {
+        if (fruta1.nombre.toLocaleLowerCase() > fruta2.nombre.toLocaleLowerCase()) {
+            return 1;
+        }
+        if (fruta1.nombre.toLocaleLowerCase() < fruta2.nombre.toLocaleLowerCase()) {
+            return -1;
+        }
+    });
 }
 
